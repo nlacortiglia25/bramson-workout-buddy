@@ -1,0 +1,7 @@
+shoulder,
+elbow,
+knee,
+hip,
+wrist,
+ankle,
+torso rotation
