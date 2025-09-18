@@ -3,7 +3,7 @@ import glob
 from videoLandmarker import getLandmarks, saveLandmarks
 from featureExtraction import extract_joint_angles
 
-root_dir = '..\\test_data_set'
+root_dir = '..\\verified_data'
 sequences_dataset = []
 
 for subdir, dirs, files in os.walk(root_dir):

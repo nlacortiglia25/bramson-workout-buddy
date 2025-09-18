@@ -49,6 +49,11 @@ def extract_joint_angles(pose_sequence):
         joint_angles = {}
         # Add shoulder rotation eventually
         # Left Shoulder
+        lhip_to_lshoulder = m.dist(pose["left hip"]['coordinate'], pose["left shoulder"]['coordinate'])
+        lshoulder_to_lelbow = m.dist(pose["left shoulder"]['coordinate'], pose["left elbow"]['coordinate'])
+        lelbow_to_lhip = m.dist(pose["left elbow"]['coordinate'], pose["left hip"]['coordinate'])
+        left_shoulder_angle = find_triangle_angle(lelbow_to_lhip, lhip_to_lshoulder, lshoulder_to_lelbow)
+
 
         # Add shoulder rotation eventually
         # Right Shoulder
