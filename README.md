@@ -15,7 +15,7 @@ Bramson connects computer vision, machine learning, and natural language generat
    - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random model to classify which exercise you’re performing.  
 
 2. **Decision Making Module**  
-   - Processes the identified exercise + user parameters (e.g., progress, workout context).  
+   - Processes the identified exercise + user parameters (e.g., exercise type, tone).  
    - Decides what type of feedback or motivation should be delivered.  
 
 3. **Motivation Generator**  
@@ -32,7 +32,14 @@ Bramson connects computer vision, machine learning, and natural language generat
 
 Here’s the high-level architecture of Bramson:  
 
-![Bramson Workflow](./bramson.png)  
+<picture>
+  <!-- Dark mode image -->
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/dark-data-flow-image.png">
+  <!-- Light mode image -->
+  <source media="(prefers-color-scheme: light)" srcset="./assets/light-data-flow-image.png">
+  <!-- Fallback image (if neither matches) -->
+  <img alt="Demo Screenshot" src="dark-data-flow-image.png">
+</picture>
 
 ---
 
