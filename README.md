@@ -12,17 +12,17 @@ Bramson connects computer vision, machine learning, and natural language generat
 
 1. **Exercise Classifier**  
    - Takes in live video data (via webcam).  
-   - Uses [MediaPipe Pose](https://developers.google.com/mediapipe/solutions/vision/pose) and a trained ML model to classify which exercise you’re performing.  
+   - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random model to classify which exercise you’re performing.  
 
-2. **Decision Making Agent**  
+2. **Decision Making Module**  
    - Processes the identified exercise + user parameters (e.g., progress, workout context).  
    - Decides what type of feedback or motivation should be delivered.  
 
 3. **Motivation Generator**  
-   - Produces short, natural-language motivational phrases (e.g., “Keep pushing!”, “Last rep, make it count!”).  
-   - Can adapt phrases depending on the exercise and workout context.  
+   - Produces motivational phrases in natural language, customized to the tone that the user wants.  
+   - Can adapt phrases depending on the exercise and workout context.
 
-4. **Text-to-Speech Agent**  
+4. **Text-to-Speech Module**  
    - Converts motivational text into speech.  
    - Plays audio through your speakers in real-time.  
 
