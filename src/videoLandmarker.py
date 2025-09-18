@@ -1,5 +1,6 @@
 import cv2
 import json
+import numpy as np
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
@@ -12,7 +13,7 @@ def saveLandmarks(sequences_dataset, output_file='landmarks_dataset.json'):
     print(f"Landmarks saved to {output_file}")
 
 # Extract landmarks from a video file, build up a sequence, label it with the exercise type, then return it
-def getLandmarks(video_path, exercise_type):
+def getLandmarksVideo(video_path, exercise_type):
 
     print(f"Processing poses for video: {video_path}, as exercise type: {exercise_type}")
     # Paths
@@ -32,10 +33,6 @@ def getLandmarks(video_path, exercise_type):
 "left hip", "right hip", "left knee", "right knee", "left ankle", "right ankle", "left heel", "right heel",
 "left foot index", "right foot index"
 ]
-
-    # Drawing utils
-    mp_drawing = mp.solutions.drawing_utils
-    mp_drawing_styles = mp.solutions.drawing_styles
 
     print("Creating pose landmark instance with the video mode")
     options = PoseLandmarkerOptions(

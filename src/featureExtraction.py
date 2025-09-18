@@ -9,27 +9,27 @@ def main():
     c = 17
 
     A = find_triangle_angle(a, b, c)
-    print(A)
+    # print(A)
     assert m.floor(A) == 34
-    print("Test 1 passed!")
+    # print("Test 1 passed!")
     
     a = 1
     b = 1
     c = 1
 
     A = find_triangle_angle(a, b, c)
-    print(A)
+    # print(A)
     assert m.floor(A) == 60
-    print("Test 2 passed!")
+    # print("Test 2 passed!")
 
     a = 20
     b = 110
     c = 120
 
     A = find_triangle_angle(a, b, c)
-    print(A)
+    # print(A)
     assert m.floor(A) == 8
-    print("Test 3 passed!")
+    # print("Test 3 passed!")
 
 
     
@@ -38,37 +38,46 @@ def main():
 # Input: Dictionary such that {'exercise_type': exercise_type, 'sequence': sequence}
 # Output: List of dictionaries such that [{'exercise_type': exercise_type, 'sequence': [frame1_angles, frame2_angles, ...]}]
 
-def extract_joint_angles(pose_sequence):
+def extract_joint_angles(pose_sequence, hasNoLabel):
     
-    print("Extracting joint angles from pose sequence...")
-    joint_sequence = {'exercise_type': pose_sequence['exercise_type'], 'sequence': []}
+    # print("Extracting joint angles from pose sequence...")
 
-    print(f"Length of the input pose sequence: {len(pose_sequence['sequence'])}")
+    if hasNoLabel == True:
+        seq = pose_sequence
+        joint_sequence = []
+    else:
+        seq = pose_sequence['sequence']
+        joint_sequence = {'exercise_type': pose_sequence['exercise_type'], 'sequence': []}
 
-    for pose in pose_sequence['sequence']:
+
+    for pose in seq:
         joint_angles = {}
         # Add shoulder rotation eventually
-        # Left Shoulder
-        lhip_to_lshoulder = m.dist(pose["left hip"]['coordinate'], pose["left shoulder"]['coordinate'])
-        lshoulder_to_lelbow = m.dist(pose["left shoulder"]['coordinate'], pose["left elbow"]['coordinate'])
-        lelbow_to_lhip = m.dist(pose["left elbow"]['coordinate'], pose["left hip"]['coordinate'])
-        left_shoulder_angle = find_triangle_angle(lelbow_to_lhip, lhip_to_lshoulder, lshoulder_to_lelbow)
+        # # Left Shoulder
+        # lhip_to_lshoulder = m.dist(pose["left hip"]['coordinate'], pose["left shoulder"]['coordinate'])
+        # lshoulder_to_lelbow = m.dist(pose["left shoulder"]['coordinate'], pose["left elbow"]['coordinate'])
+        # lelbow_to_lhip = m.dist(pose["left elbow"]['coordinate'], pose["left hip"]['coordinate'])
+        # left_shoulder_angle = find_triangle_angle(lelbow_to_lhip, lhip_to_lshoulder, lshoulder_to_lelbow)
+        # joint_angles['left shoulder'] = left_shoulder_angle
 
-
-        # Add shoulder rotation eventually
-        # Right Shoulder
-        
+        # # Add shoulder rotation eventually
+        # # Right Shoulder
+        # rhip_to_rhoulder = m.dist(pose["right hip"]['coordinate'], pose["right shoulder"]['coordinate'])
+        # rshoulder_to_relbow = m.dist(pose["right shoulder"]['coordinate'], pose["right elbow"]['coordinate'])
+        # relbow_to_rhip = m.dist(pose["right elbow"]['coordinate'], pose["right hip"]['coordinate'])
+        # right_shoulder_angle = find_triangle_angle(relbow_to_rhip, rhip_to_rhoulder, rshoulder_to_relbow)
+        # joint_angles['right shoulder'] = right_shoulder_angle
         
         # Left Elbow
-        print("Calculating left elbow angle...")
+        # print("Calculating left elbow angle...")
         lwrist_to_lelbow = m.dist((pose["left wrist"]['coordinate']), pose["left elbow"]['coordinate'])
-        print(f"Distance between left wrist {pose['left wrist']['coordinate']} and left elbow {pose['left elbow']['coordinate']}: {lwrist_to_lelbow}")
+        # print(f"Distance between left wrist {pose['left wrist']['coordinate']} and left elbow {pose['left elbow']['coordinate']}: {lwrist_to_lelbow}")
         lelbow_to_lshoulder = m.dist(pose["left elbow"]['coordinate'], pose["left shoulder"]['coordinate'])
-        print(f"Distance between left elbow {pose['left elbow']['coordinate']} and left shoulder {pose['left shoulder']['coordinate']}: {lelbow_to_lshoulder}")
+        # print(f"Distance between left elbow {pose['left elbow']['coordinate']} and left shoulder {pose['left shoulder']['coordinate']}: {lelbow_to_lshoulder}")
         lshoulder_to_lwrist = m.dist(pose["left shoulder"]['coordinate'], pose["left wrist"]['coordinate'])
-        print(f"Distance between left shoulder {pose['left shoulder']['coordinate']} and left wrist {pose['left wrist']['coordinate']}: {lshoulder_to_lwrist}")
+        # print(f"Distance between left shoulder {pose['left shoulder']['coordinate']} and left wrist {pose['left wrist']['coordinate']}: {lshoulder_to_lwrist}")
         left_elbow_angle = find_triangle_angle(lshoulder_to_lwrist, lwrist_to_lelbow, lelbow_to_lshoulder)
-        print(f"Left elbow angle: {left_elbow_angle} degrees")
+        # print(f"Left elbow angle: {left_elbow_angle} degrees")
 
         joint_angles['left elbow'] = left_elbow_angle
 
@@ -141,8 +150,11 @@ def extract_joint_angles(pose_sequence):
         # Torso rotation
 
         # Finally, append the joint angles for this frame to the current sequence
-        joint_sequence['sequence'].append(joint_angles)
-    # print("Length of the current joint sequence: ", len(joint_sequence['sequence']))
+        if hasNoLabel == True:
+            joint_sequence.append(joint_angles)
+        else:
+            joint_sequence['sequence'].append(joint_angles)
+    # # print("Length of the current joint sequence: ", len(joint_sequence['sequence']))
     return joint_sequence
 
 
