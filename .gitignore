@@ -5,6 +5,9 @@ __pycache__/
 *.pyd
 *.pkl
 
+# JSON
+*.json
+
 # C extensions
 *.so
 
