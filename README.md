@@ -1,34 +1,33 @@
-# 🏋️‍♂️ Bramson — The AI Motivational Gym Bro  
+# Bramson — AI Motivational Gym Bro
 
-**Bramson** is your virtual workout buddy that not only recognizes your exercises in real time but also hypes you up with motivational phrases — just like your gym bro would.  
+**Bramson** is your virtual workout buddy that not only recognizes your exercises in real time but also hypes you up with relevant personalized motivational phrases — just like your gym bro would.
+The agent allows for user specified tones and personalities, i.e. You can have your gym bro to be informative, aggressive, friendly,  or sweet :) You could also have them talk formally or use
+some gym-brah slang.
 
-This repository contains the ongoing development of Bramson’s components: from exercise classification to motivational text generation and text-to-speech output.  
+This repository contains:
+   - Scripts used to extract relevant features from exercise videos
+   - Scripts used to train exercise predictoin models using the extracted exercise data
+   - Modules for pose estimation, exercise classification, language generation, and text to speach
+   - Also contains light version of MediaPipe Pose Landmark model for pose estimation (may include a download script for this later to lighten repo)
 
 ---
 
-## 🔎 How It Works  
-
-Bramson connects computer vision, machine learning, and natural language generation into a full motivational loop:  
-
+## How It Works  
 1. **Exercise Classifier**  
    - Takes in live video data (via webcam).  
-   - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random model to classify which exercise you’re performing.  
+   - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random forest model to predict which exercise you’re performing.  
 
-2. **Decision Making Module**  
-   - Processes the identified exercise + user parameters (e.g., exercise type, tone).  
-   - Decides what type of feedback or motivation should be delivered.  
+3. **Motivation Generator**
+   - Generates message for the user, based on context, and user specified tones and personality.
+   - Functionality soon to be added for counting reps.
 
-3. **Motivation Generator**  
-   - Produces motivational phrases in natural language, customized to the tone that the user wants.  
-   - Can adapt phrases depending on the exercise and workout context.
-
-4. **Text-to-Speech Module**  
+5. **Text-to-Speech Module**  
    - Converts motivational text into speech.  
    - Plays audio through your speakers in real-time.  
 
 ---
 
-## 🖼️ System Architecture  
+## System Architecture  
 
 Here’s the high-level architecture of Bramson:  
 
@@ -43,7 +42,7 @@ Here’s the high-level architecture of Bramson:
 
 ---
 
-## ✨ Features  
+## Features  
 
 - Real-time pose detection using MediaPipe.  
 - Exercise classification with scikit-learn models.  
@@ -53,16 +52,16 @@ Here’s the high-level architecture of Bramson:
 
 ---
 
-## 🚀 Current Status  
+## Current Status  
 
 - ✅ Exercise classification working on webcam feed.  
 - ✅ Model training pipeline built with extracted joint angle features.  
-- ⚙️ Motivation generator in progress.  
-- ⚙️ Text-to-Speech agent integration in progress.  
+- ✅ Motivation generator complete.  
+- ✅ Text-to-Speech module complete.  
 
 ---
 
-## 📌 Roadmap  
+## Roadmap  
 
 - [ ] Improve exercise classification by including temporal sequence data.  
 - [ ] Expand motivational phrase library.  
@@ -71,7 +70,7 @@ Here’s the high-level architecture of Bramson:
 
 ---
 
-## 🧑‍💻 Development  
+## Development  
 
 Clone the repository and install dependencies:  
 
@@ -88,7 +87,3 @@ python src/streamLandmarker.py
 ```
 
 ---
-
-## 💡 Inspiration  
-
-Bramson is designed to be the hype-man you wish you always had — one that recognizes your grind and pushes you to keep going.  
