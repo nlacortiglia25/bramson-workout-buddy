@@ -58,7 +58,7 @@ This repository contains:
 ## Roadmap  
 
 - [ ] Improve exercise classification with improved set of features and improved temporal analysis.  
-- [ ] Expand motivational phrase library, currently limitted in personality and phrase variation. 
+- [ ] Expand capabilities of motivation generator module, currently limitted in personality and phrase variation. 
 - [ ] Deploy for desktop, raspberry pi, and possibly mobile devices.
 
 ---
