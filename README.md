@@ -1,8 +1,8 @@
 # Bramson — AI Motivational Gym Bro
 
-**Bramson** is your virtual workout buddy that not only recognizes your exercises in real time but also hypes you up with relevant personalized motivational phrases — just like your gym bro would.
-The agent allows for user specified tones and personalities, i.e. You can have your gym bro to be informative, aggressive, friendly,  or sweet :) You could also have them talk formally or use
-some gym-brah slang.
+**Bramson** is a virtual workout buddy that recognizes your exercises in real time and hypes you up with motivational phrases, while also providing helpful tips for form and execution (or not if you find that stuff annoying).
+Bramson allows for user specified tones and personalities, i.e. You can have your gym bro to be informative, aggressive, friendly,  or sweet :) You could also have them talk formally or use
+some gym-brah style slang.
 
 This repository contains:
    - Scripts used to extract relevant features from exercise videos
@@ -25,21 +25,15 @@ This repository contains:
    - Converts motivational text into speech.  
    - Plays audio through your speakers in real-time.  
 
----
-
-## System Architecture  
-
-Here’s the high-level architecture of Bramson:  
-
+--- 
 <picture>
   <!-- Dark mode image -->
   <source media="(prefers-color-scheme: dark)" srcset="./assets/dark-data-flow-image.png">
   <!-- Light mode image -->
   <source media="(prefers-color-scheme: light)" srcset="./assets/light-data-flow-image.png">
   <!-- Fallback image (if neither matches) -->
-  <img alt="Demo Screenshot" src="dark-data-flow-image.png">
+  <img alt="Bramson Data Pipeline image" src="dark-data-flow-image.png">
 </picture>
-
 ---
 
 ## Features  
@@ -63,10 +57,9 @@ Here’s the high-level architecture of Bramson:
 
 ## Roadmap  
 
-- [ ] Improve exercise classification by including temporal sequence data.  
-- [ ] Expand motivational phrase library.  
-- [ ] Add personalization (e.g., user-defined workout plans, preferred motivation style).  
-- [ ] Deploy as a desktop or mobile application.  
+- [ ] Improve exercise classification with improved set of features and improved temporal analysis.  
+- [ ] Expand motivational phrase library, currently limitted in personality and phrase variation. 
+- [ ] Deploy for desktop, raspberry pi, and possibly mobile devices.
 
 ---
 
