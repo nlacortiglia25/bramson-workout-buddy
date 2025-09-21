@@ -53,20 +53,20 @@ def extract_joint_angles(pose_sequence, hasNoLabel):
     for pose in seq:
         joint_angles = {}
         # Add shoulder rotation eventually
-        # Left Shoulder
-        lhip_to_lshoulder = m.dist(pose["left hip"]['coordinate'], pose["left shoulder"]['coordinate'])
-        lshoulder_to_lelbow = m.dist(pose["left shoulder"]['coordinate'], pose["left elbow"]['coordinate'])
-        lelbow_to_lhip = m.dist(pose["left elbow"]['coordinate'], pose["left hip"]['coordinate'])
-        left_shoulder_angle = find_triangle_angle(lelbow_to_lhip, lhip_to_lshoulder, lshoulder_to_lelbow)
-        joint_angles['left shoulder'] = left_shoulder_angle
+        # # Left Shoulder
+        # lhip_to_lshoulder = m.dist(pose["left hip"]['coordinate'], pose["left shoulder"]['coordinate'])
+        # lshoulder_to_lelbow = m.dist(pose["left shoulder"]['coordinate'], pose["left elbow"]['coordinate'])
+        # lelbow_to_lhip = m.dist(pose["left elbow"]['coordinate'], pose["left hip"]['coordinate'])
+        # left_shoulder_angle = find_triangle_angle(lelbow_to_lhip, lhip_to_lshoulder, lshoulder_to_lelbow)
+        # joint_angles['left shoulder'] = left_shoulder_angle
 
-        # # Add shoulder rotation eventually
-        # # Right Shoulder
-        rhip_to_rhoulder = m.dist(pose["right hip"]['coordinate'], pose["right shoulder"]['coordinate'])
-        rshoulder_to_relbow = m.dist(pose["right shoulder"]['coordinate'], pose["right elbow"]['coordinate'])
-        relbow_to_rhip = m.dist(pose["right elbow"]['coordinate'], pose["right hip"]['coordinate'])
-        right_shoulder_angle = find_triangle_angle(relbow_to_rhip, rhip_to_rhoulder, rshoulder_to_relbow)
-        joint_angles['right shoulder'] = right_shoulder_angle
+        # # # Add shoulder rotation eventually
+        # # # Right Shoulder
+        # rhip_to_rhoulder = m.dist(pose["right hip"]['coordinate'], pose["right shoulder"]['coordinate'])
+        # rshoulder_to_relbow = m.dist(pose["right shoulder"]['coordinate'], pose["right elbow"]['coordinate'])
+        # relbow_to_rhip = m.dist(pose["right elbow"]['coordinate'], pose["right hip"]['coordinate'])
+        # right_shoulder_angle = find_triangle_angle(relbow_to_rhip, rhip_to_rhoulder, rshoulder_to_relbow)
+        # joint_angles['right shoulder'] = right_shoulder_angle
         
         # Left Elbow
         # print("Calculating left elbow angle...")

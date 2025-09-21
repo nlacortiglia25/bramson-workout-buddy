@@ -6,6 +6,10 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 from mediapipe.framework.formats import landmark_pb2
 from featureExtraction import extract_joint_angles
+from motivationGeneration import generate_motivation
+from tts import text_to_speach
+import threading
+import time
 
 print("Starting live webcam pose detection")
 
@@ -17,6 +21,7 @@ BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions
 VisionRunningMode = mp.tasks.vision.RunningMode
+tts_thread = None
 
 joint_map = [
 "nose", "left eye (inner)", "left eye", "left eye (outer)", "right eye (inner)", "right eye", "right eye (outer)",
@@ -126,7 +131,12 @@ with PoseLandmarker.create_from_options(options) as landmarker:
                     numeric_pred = model.predict(features.reshape(1, -1))
                     # Convert to human-readable label
                     predicted_label = encoder.inverse_transform(numeric_pred)
-                    print(f"Current exercise: {predicted_label}")
+                    print(f"Current exercise: {predicted_label[0]}")
+                    # Play motivation
+                    if timestamp_ms % 500:
+                        message = generate_motivation(predicted_label[0], "gym_bro")
+                        tts_thread = threading.Thread(target=text_to_speach, args=(message,))
+                        tts_thread.start()
                     world_pose_buffer.pop(0)
 
         # Optional: show live window (remove if running headless)
