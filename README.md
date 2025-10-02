@@ -1,4 +1,4 @@
-# Bramson — AI Motivational Gym Bro
+# Bramson — AI Motivational Gym Buddy
 
 **Bramson** is a virtual workout buddy that watches your workouts in realtime and gives you personalized motivation and feedback relevant to your current workout.
 Bramson allows for user specified tones and personalities, i.e. You can have your workout buddy to be informative, aggressive, friendly, neutral, or sweet. You could also have them talk formally or use some gym-brah style slang.
