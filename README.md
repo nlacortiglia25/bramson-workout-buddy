@@ -3,7 +3,7 @@
 **Bramson** is a virtual workout buddy that watches your workouts in realtime and gives you personalized motivation and feedback relevant to your current workout.
 Bramson allows for user specified tones and personalities, i.e. You can have your workout buddy to be informative, aggressive, friendly, neutral, or sweet :) You could also have them talk formally or use some gym-brah style slang.
 
-*Important Notes* - This repo is still under development. The program was developed in a windows environment, as of right now there may be unresolved issues with web cam integration running the program on Linux, MacOS, and other operating systems. 
+*Important Notes* - This repo is still under development. The program was developed in a windows environment, as of right now there may be unresolved issues with web cam integration running the program on Linux, macOS, and other operating systems. 
 
 *Warning* - Aggressive personality may use profanity. Use are your own discretion
 
@@ -74,6 +74,25 @@ Clone the repository and install dependencies:
 ```bash
 git clone https://github.com/nlacortiglia25/bramson-workout-buddy.git
 cd bramson-workout-buddy
+```
+
+(Optional but recommended) Activate python virtual environment
+```bash
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+
+# Windows (PowerShell):
+venv\Scripts\Activate.ps1
+
+# Windows (Command Prompt):
+venv\Scripts\activate.bat
+
+# macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
