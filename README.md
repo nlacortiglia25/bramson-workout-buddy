@@ -81,8 +81,6 @@ cd bramson-workout-buddy
 # Create a virtual environment
 python -m venv venv
 
-# Activate the virtual environment
-
 # Windows (PowerShell):
 venv\Scripts\Activate.ps1
 
