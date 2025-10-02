@@ -3,7 +3,7 @@
 **Bramson** is a virtual workout buddy that watches your workouts in realtime and gives you personalized motivation and feedback relevant to your current workout.
 Bramson allows for user specified tones and personalities, i.e. You can have your workout buddy to be informative, intense, friendly, neutral, or sweet :) You could also have them talk formally or use some gym-brah style slang.
 
-*Important Note* - This program was developed in a windows environment, as of right now there may be unresolved issues with web cam integration running the program on Linux, MacOS, and other operating systems. 
+*Important Notes* - This repo is still under development. The program was developed in a windows environment, as of right now there may be unresolved issues with web cam integration running the program on Linux, MacOS, and other operating systems. 
 
 This repository contains:
    - Scripts used to extract relevant features from exercise videos.
