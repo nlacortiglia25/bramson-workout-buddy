@@ -70,8 +70,8 @@ This repository contains:
 Clone the repository and install dependencies:  
 
 ```bash
-git clone https://github.com/nlacortiglia25/bramson.git
-cd bramson
+git clone https://github.com/nlacortiglia25/bramson-workout-buddy.git
+cd bramson-workout-buddy
 pip install -r requirements.txt
 ```
 
