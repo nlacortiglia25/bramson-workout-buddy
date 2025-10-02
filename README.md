@@ -2,6 +2,7 @@
 
 **Bramson** is a virtual workout buddy that watches your workouts in realtime and gives you personalized motivation and feedback relevant to your current workout.
 Bramson allows for user specified tones and personalities, i.e. You can have your workout buddy to be informative, intense, friendly, neutral, or sweet :) You could also have them talk formally or use some gym-brah style slang.
+* Note * This program was developed in a windows environment, as of right now there may be unresolved issues with web cam integration running the program on Linux, MacOS, and other operating systems. 
 
 This repository contains:
    - Scripts used to extract relevant features from exercise videos.
@@ -12,13 +13,13 @@ This repository contains:
 ---
 
 ## How It Works  
-1. **Exercise Classifier**  
-   - Takes in live video data (via webcam).  
-   - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random forest model to predict which exercise you’re performing.
+1. **Exercise Classification**  
+   - Processes live video feed (via webcam).  
+   - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random forest model to predict which exercise the user is performing.
 
-2. **Motivation Generator**
-   - Generates message for the user, based on context, and user specified tones and personality.
-   - Functionality soon to be added for LLM natural language generation and counting reps.
+2. **Motivation Generation**
+   - Generates an informative or motivation message for the user, based on the exercise of the user, and user specified tones and personality.
+   - Functionality soon to be added for LLM natural language generation and counting reps, the program currently uses a data set of pregenerated responses.
 
 3. **Text-to-Speech Module**  
    - Converts motivational text into speech.  
@@ -39,9 +40,9 @@ This repository contains:
 
 - Real-time pose detection using MediaPipe.  
 - Exercise classification using a Random Forest model.  
-- Dynamic motivational phrase generation.  
+- Relevant motivational or informative phrase generation.  
 - Text-to-Speech integration for a full “gym buddy” effect.  
-- Modular pipeline — each component (classifier, decision agent, TTS) can be improved independently.  
+- Modular pipeline — each component (classifier, motivation generation, TTS) have limitted dependency and can be improved independently.  
 
 ---
 
