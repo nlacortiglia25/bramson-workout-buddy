@@ -6,10 +6,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
-# -------------------------
 # Load dataset
-# -------------------------
-with open("landmarks_dataset.json", "r") as f:
+with open("./landmarks_dataset.json", "r") as f:
     data = json.load(f)
 
 X = []
@@ -47,43 +45,30 @@ for i, sample in enumerate(data):
 X = np.array(X)
 y = np.array(y)
 
-# -------------------------
-# Quick sanity check
-# -------------------------
+# Check
 print(f"X shape: {X.shape}")
 print(f"y shape: {y.shape}")
 print(f"First row of X: {X[0]}")
 print(f"First label: {y[0]}")
 
-# -------------------------
-# Encode labels
-# -------------------------
+# Encode Labels
 encoder = LabelEncoder()
 y = encoder.fit_transform(y)
 
-# -------------------------
 # Train/test split
-# -------------------------
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=0, stratify=y
 )
 
-# -------------------------
 # Train RandomForest
-# -------------------------
 model = RandomForestClassifier(max_depth=None, random_state=0)
 model.fit(X_train, y_train)
 
-# -------------------------
-# Evaluate
-# -------------------------
+# Eval
 y_pred = model.predict(X_test)
 print(f"Number of data points skipped: {num_skipped}")
 print(classification_report(y_test, y_pred, target_names=encoder.classes_))
 
-
-# -------------------------
 # Save Model
-# -------------------------
 joblib.dump(model, "./models/exercise_classify_model.pkl")
 joblib.dump(encoder, "./models/exercise_label_encoder.pkl")

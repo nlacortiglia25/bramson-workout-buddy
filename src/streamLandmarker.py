@@ -7,21 +7,27 @@ from mediapipe.tasks.python import vision
 from mediapipe.framework.formats import landmark_pb2
 from featureExtraction import extract_joint_angles
 from motivationGeneration import generate_motivation
-from tts import text_to_speach
+from tts import text_to_speech
 import threading
-import time
+import queue
 
-print("Starting live webcam pose detection")
+print("Starting...")
 
 # Paths
-model_path = './models/pose_landmarker_lite.task'
+pose_model_path = './models/pose_landmarker_lite.task'
+exercise_model_path = "./models/exercise_classify_model.pkl"
+exercise_encoder_path = "./models/exercise_label_encoder.pkl"
 
-# Aliases
+# Vars
 BaseOptions = mp.tasks.BaseOptions
 PoseLandmarker = mp.tasks.vision.PoseLandmarker
 PoseLandmarkerOptions = mp.tasks.vision.PoseLandmarkerOptions
 VisionRunningMode = mp.tasks.vision.RunningMode
-tts_thread = None
+tts_queue = queue.Queue()
+tts_thread = threading.Thread(target=text_to_speech, args=(tts_queue,), daemon=True)
+tts_thread.start()
+curr_exercise = None 
+prev_exercise = None
 
 joint_map = [
 "nose", "left eye (inner)", "left eye", "left eye (outer)", "right eye (inner)", "right eye", "right eye (outer)",
@@ -37,9 +43,8 @@ mp_drawing_styles = mp.solutions.drawing_styles
 
 # Load exercise classification model
 print("Importing models...")
-model = joblib.load("./models/exercise_classify_model.pkl")
-encoder = joblib.load("./models/exercise_label_encoder.pkl")
-
+model = joblib.load(exercise_model_path)
+encoder = joblib.load(exercise_encoder_path)
 
 # Buffer joint data
 sequence_length = 120  # number of frames per input
@@ -47,7 +52,7 @@ world_pose_buffer = [] # store world poses over time in a sequence
 
 # Create pose landmarker
 options = PoseLandmarkerOptions(
-    base_options=BaseOptions(model_asset_path=model_path),
+    base_options=BaseOptions(model_asset_path=pose_model_path),
     running_mode=VisionRunningMode.VIDEO
 )
 
@@ -57,7 +62,9 @@ with PoseLandmarker.create_from_options(options) as landmarker:
         print("Error: Could not open webcam.")
         exit()
 
-    fps = 30  # approximate webcam FPS
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    if fps == 0: 
+        fps = 30 # Default to 30 FPS if reads as 0.0 for now.
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
@@ -84,7 +91,6 @@ with PoseLandmarker.create_from_options(options) as landmarker:
                     ]
                 )
 
-                # print("Drawing landmarks onto frame")
                 # Draw landmarks on the frame
                 mp_drawing.draw_landmarks(
                     frame,
@@ -109,7 +115,6 @@ with PoseLandmarker.create_from_options(options) as landmarker:
                 world_pose_buffer.append(pose)
                 # Keep buffer size constant
                 if len(world_pose_buffer) > sequence_length:
-                    print("Determining current exercise...")
                     # Extract and predict here
                     sequence_obj = extract_joint_angles(world_pose_buffer, True)
                     
@@ -131,15 +136,17 @@ with PoseLandmarker.create_from_options(options) as landmarker:
                     numeric_pred = model.predict(features.reshape(1, -1))
                     # Convert to human-readable label
                     predicted_label = encoder.inverse_transform(numeric_pred)
-                    print(f"Current exercise: {predicted_label[0]}")
-                    # Play motivation
-                    if timestamp_ms % 500:
-                        message = generate_motivation(predicted_label[0], "gym_bro")
-                        tts_thread = threading.Thread(target=text_to_speach, args=(message,))
-                        tts_thread.start()
+                    curr_exercise = predicted_label[0]
+
+                    if curr_exercise != prev_exercise or prev_exercise == None:
+                        print(f"New exercise detected...")
+                        message = generate_motivation(curr_exercise, "gym_bro")
+                        tts_queue.put(message, block=True)
+
+                    prev_exercise = curr_exercise
                     world_pose_buffer.pop(0)
 
-        # Optional: show live window (remove if running headless)
+        # Live window
         cv2.imshow("Webcam Pose", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

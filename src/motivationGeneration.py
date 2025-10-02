@@ -3,37 +3,37 @@
 def generate_motivation(exercise_type, tone):
     motivational_messages = {
     "barbell biceps curl": {
-        "gym_bro": "C’mon, pump those guns! Every curl counts!",
-        "sweet_supportive": "You’re doing amazing, keep those biceps growing!",
-        "aggressive": "FUCK YOU, YOU’RE WEAK! SHOW ME THOSE CURLS!",
+        "gym_bro": "Come on, pump those guns! Every curl counts!",
+        "sweet_supportive": "You are doing amazing, keep those biceps growing!",
+        "aggressive": "FUCK YOU, YOU ARE WEAK! SHOW ME THOSE CURLS!",
         "friendly": "Nice work! Keep curling, buddy!",
         "default": "Focus on form and complete each curl."
     },
     "bench press": {
         "gym_bro": "Push it, bro! Chest day domination!",
-        "sweet_supportive": "You’ve got this, strong and steady!",
+        "sweet_supportive": "You have got this, strong and steady!",
         "aggressive": "LIGHT WEIGHT, BABY! CRUSH IT!",
-        "friendly": "Keep going, you’re doing great!",
+        "friendly": "Keep going, you are doing great!",
         "default": "Maintain proper grip and press safely."
     },
     "chest fly machine": {
         "gym_bro": "Squeeze it, bro! Feel that chest burn!",
         "sweet_supportive": "Love how dedicated you are, keep it up!",
-        "aggressive": "THAT ALL YOU GOT, PUSSY?! SQUEEZE HARDER!",
+        "aggressive": "THAT IS ALL YOU GOT, PUSSY?! SQUEEZE HARDER!",
         "friendly": "Great effort, keep those flies controlled!",
         "default": "Slow, controlled reps for full chest engagement."
     },
     "deadlift": {
         "gym_bro": "Lift that weight like a beast, bro!",
-        "sweet_supportive": "You’re strong, keep pulling with care!",
+        "sweet_supportive": "You are strong, keep pulling with care!",
         "aggressive": "COME ON! PICK IT UP OR QUIT, WEAKLING!",
-        "friendly": "Solid form! Keep pulling, you’ve got this!",
+        "friendly": "Solid form! Keep pulling, you have got this!",
         "default": "Keep your back straight and lift with your legs."
     },
     "decline bench press": {
         "gym_bro": "Lower chest gains, bro! Push it!",
         "sweet_supportive": "Nice work! Every rep counts for growth!",
-        "aggressive": "DROP IT AND PRESS, DON’T BE A BITCH!",
+        "aggressive": "DROP IT AND PRESS, DO NOT BE A BITCH!",
         "friendly": "Great reps! Keep going, friend!",
         "default": "Maintain a controlled motion and focus on your lower chest."
     },
@@ -53,9 +53,9 @@ def generate_motivation(exercise_type, tone):
     },
     "incline bench press": {
         "gym_bro": "Upper chest day, bro! Push it up!",
-        "sweet_supportive": "Great work! You’re shaping that upper chest!",
+        "sweet_supportive": "Great work! You are shaping that upper chest!",
         "aggressive": "PUSH IT TO THE SKY OR QUIT, LOSER!",
-        "friendly": "Keep pressing, you’re doing awesome!",
+        "friendly": "Keep pressing, you are doing awesome!",
         "default": "Control the bar and focus on upper chest engagement."
     },
     "lat pulldown": {
@@ -75,7 +75,7 @@ def generate_motivation(exercise_type, tone):
     "leg extension": {
         "gym_bro": "Crush those quads, bro! Lock out hard!",
         "sweet_supportive": "Strong legs, keep pushing safely!",
-        "aggressive": "EXTEND OR YOU’RE TRASH, MOVE IT!",
+        "aggressive": "EXTEND OR YOU ARE TRASH, MOVE IT!",
         "friendly": "Good reps! Keep your legs strong!",
         "default": "Extend fully but control the motion back down."
     },
@@ -88,15 +88,15 @@ def generate_motivation(exercise_type, tone):
     },
     "plank": {
         "gym_bro": "Hold it, bro! Core strong as steel!",
-        "sweet_supportive": "You’re doing amazing! Keep holding strong!",
-        "aggressive": "DROP NOW? PAThetic! HOLD THAT PLANK!",
-        "friendly": "Keep that form, buddy, you got this!",
+        "sweet_supportive": "You are doing amazing! Keep holding strong!",
+        "aggressive": "DROP NOW? PATHETIC! HOLD THAT PLANK!",
+        "friendly": "Keep that form, buddy, you have got this!",
         "default": "Keep your back straight and core tight throughout."
     },
     "pull Up": {
         "gym_bro": "Pull yourself up, bro! Get those lats!",
         "sweet_supportive": "Great strength, keep going!",
-        "aggressive": "CAN’T EVEN PULL? SORRY, PATHETIC!",
+        "aggressive": "CANNOT EVEN PULL? SORRY, PATHETIC!",
         "friendly": "Awesome reps! Keep climbing!",
         "default": "Engage your back and pull slowly to chin level."
     },
@@ -117,14 +117,14 @@ def generate_motivation(exercise_type, tone):
     "russian twist": {
         "gym_bro": "Twist it, bro! Obliques blazing!",
         "sweet_supportive": "Great rotation! Your core is strong!",
-        "aggressive": "TWIST HARDER OR YOU’RE TRASH, LOSER!",
-        "friendly": "Keep twisting! You’re doing awesome!",
+        "aggressive": "TWIST HARDER OR YOU ARE TRASH, LOSER!",
+        "friendly": "Keep twisting! You are doing awesome!",
         "default": "Rotate slowly and control your torso."
     },
     "shoulder press": {
         "gym_bro": "Press it up, bro! Shoulders of steel!",
         "sweet_supportive": "Beautiful lift! Keep building those shoulders!",
-        "aggressive": "PUSH OR QUIT! YOU’RE WEAK!",
+        "aggressive": "PUSH OR QUIT! YOU ARE WEAK!",
         "friendly": "Great press! Keep those arms strong!",
         "default": "Press with control and avoid locking elbows aggressively."
     },
@@ -152,7 +152,7 @@ def generate_motivation(exercise_type, tone):
     "tricep Pushdown": {
         "gym_bro": "Push it down, bro! Triceps blasting!",
         "sweet_supportive": "Strong pushdowns! Keep building your arms!",
-        "aggressive": "PUSH HARD OR YOU’RE TRASH, BITCH!",
+        "aggressive": "PUSH HARD OR YOU ARE TRASH, BITCH!",
         "friendly": "Good reps! Keep those arms engaged!",
         "default": "Keep elbows close and push slowly for full tricep activation."
     }

@@ -1,7 +1,23 @@
-import pyttsx3
+import subprocess
+import platform
 
+def text_to_speech(queue):
 
-def text_to_speach(message):
-    engine = pyttsx3.init()
-    engine.say(message)
-    engine.runAndWait()
+    print("\ttts thread started.")
+    system = platform.system()
+
+    while(True):
+        print("\ttts waiting for item...")
+        message = queue.get(block = True, timeout=30)
+        print(f"\tqueue has about {queue.qsize()} items")
+        print(f"\ttts speaking this message: {message}...")
+        
+        match system:
+            case "Windows":
+                subprocess.run(["powershell", "-Command", f"Add-Type –AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('{message}')"])
+            case "Linux":
+                subprocess.run(["espeak", message])
+            case "Darwin":
+                subprocess.run(["say", message])
+
+        print(f"\tfinished speaking...")

@@ -15,13 +15,14 @@ This repository contains:
 ## How It Works  
 1. **Exercise Classifier**  
    - Takes in live video data (via webcam).  
-   - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random forest model to predict which exercise you’re performing.  
+   - Uses [MediaPipe Pose Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) and a random forest model to predict which exercise you’re performing.
+   - Another model can 
 
-3. **Motivation Generator**
+2. **Motivation Generator**
    - Generates message for the user, based on context, and user specified tones and personality.
-   - Functionality soon to be added for counting reps.
+   - Functionality soon to be added for LLM natural language generation and counting reps.
 
-5. **Text-to-Speech Module**  
+3. **Text-to-Speech Module**  
    - Converts motivational text into speech.  
    - Plays audio through your speakers in real-time.  
 
