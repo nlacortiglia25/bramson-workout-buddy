@@ -4,6 +4,7 @@
 Bramson allows for user specified tones and personalities, i.e. You can have your workout buddy to be informative, intense, friendly, neutral, or sweet :) You could also have them talk formally or use some gym-brah style slang.
 
 *Important Notes* - This repo is still under development. The program was developed in a windows environment, as of right now there may be unresolved issues with web cam integration running the program on Linux, MacOS, and other operating systems. 
+
 *Warning* - Aggressive personality may use profanity. Use are your own discretion
 
 This repository contains:
