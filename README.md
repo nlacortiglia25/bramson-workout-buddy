@@ -5,7 +5,7 @@ Bramson allows for user specified tones and personalities, i.e. You can have you
 
 *Important Notes* - This repo is still under development. The program was developed in a windows environment, as of right now there may be unresolved issues with web cam integration running the program on Linux, macOS, and other operating systems. 
 
-*Warning* - Aggressive personality may use profanity. Use are your own discretion.
+*Warning* - Aggressive personality may use profanity. Use at your own discretion.
 
 This repository contains:
    - Scripts used to extract relevant features from exercise videos.
