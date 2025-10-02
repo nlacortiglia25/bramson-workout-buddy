@@ -8,7 +8,7 @@ Bramson allows for user specified tones and personalities, i.e. You can have you
 This repository contains:
    - Scripts used to extract relevant features from exercise videos.
    - Scripts used to train exercise prediction models using the extracted exercise data using KNN or Random Forest.
-   - Modules for pose estimation, exercise classification, language generation, and text-to-speach.
+   - Modules for pose estimation, exercise classification, message generation, and text-to-speach.
    - Light version of MediaPipe Pose Landmark model for pose estimation (may include a download script for this later to lighten repo).
    - Soon, repo will include download scripts to download a pretrained model to be used with the program.
 ---
