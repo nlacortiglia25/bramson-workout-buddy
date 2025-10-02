@@ -43,7 +43,7 @@ This repository contains:
 - Exercise classification using a Random Forest model.  
 - Relevant motivational or informative phrase generation.  
 - Text-to-Speech integration for a full “gym buddy” effect.  
-- Modular pipeline — each component (classifier, motivation generation, TTS) have limitted dependency and can be improved independently.  
+- Modular pipeline — each component (classifier, motivation generation, TTS) has limited dependency and can be improved independently.  
 
 ---
 
@@ -60,7 +60,7 @@ This repository contains:
 
 - [ ] Improve exercise classification by considering more features and improving temporal analysis.
 - [ ] Improve model training process, possibly use a CNN or another Deep Learning model. 
-- [ ] Expand capabilities of motivation generator module, currently limitted in personality and phrase variation. 
+- [ ] Expand capabilities of motivation generator module, currently limited in personality and phrase variation. 
 - [ ] Deploy for Windows and Linux Systems, as well as raspberry pi's and possibly mobile devices.
 
 ---
