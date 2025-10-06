@@ -29,9 +29,7 @@ tts_thread.start()
 curr_exercise = None 
 prev_exercise = None
 
-# Input Parameters
-SPEACH_INTERVAL = 10000#ms
-
+personalities = ["gym_bro", "sweet_supportive", "aggressive", "friendly", "default"]
 
 joint_map = [
 "nose", "left eye (inner)", "left eye", "left eye (outer)", "right eye (inner)", "right eye", "right eye (outer)",
@@ -40,6 +38,11 @@ joint_map = [
 "left hip", "right hip", "left knee", "right knee", "left ankle", "right ankle", "left heel", "right heel",
 "left foot index", "right foot index"
 ]
+
+# Input Parameters
+SPEACH_INTERVAL = 10000#ms
+next_speach_interval = SPEACH_INTERVAL
+PERSONALITY = personalities[1]
 
 # Drawing utils
 mp_drawing = mp.solutions.drawing_utils
@@ -145,15 +148,18 @@ with PoseLandmarker.create_from_options(options) as landmarker:
                     if curr_exercise != prev_exercise or prev_exercise == None:
                         print(f"New exercise: {curr_exercise} detected...")
 
-                    if timestamp_ms % SPEACH_INTERVAL == 0: # Every 10 seconds
+                    if timestamp_ms >= next_speach_interval:
+                        next_speach_interval += SPEACH_INTERVAL
                         print(f"10 seconds passed (timestamp = {timestamp_ms}), now generating message")
-                        message = generate_motivation(curr_exercise, "gym_bro")
+                        message = generate_motivation(curr_exercise, PERSONALITY)
                         tts_queue.put(message, block=True)
 
                     prev_exercise = curr_exercise
                     world_pose_buffer.pop(0)
 
         # Live window
+        cv2.putText(frame, f"Exercise: {curr_exercise}", (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        cv2.putText(frame, f"Personality: {PERSONALITY}", (20, 80),cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 0), 2)
         cv2.imshow("Webcam Pose", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
