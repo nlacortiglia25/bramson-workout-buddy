@@ -1,6 +1,7 @@
 import subprocess
 import platform
 
+# Exception thrown if 60 seconds passes with nothing added to the speach queue
 def text_to_speech(queue):
 
     print("\ttts thread started.")
@@ -8,7 +9,7 @@ def text_to_speech(queue):
 
     while(True):
         print("\ttts waiting for item...")
-        message = queue.get(block = True, timeout=30)
+        message = queue.get(block = True, timeout=60)
         print(f"\tqueue has about {queue.qsize()} items")
         print(f"\ttts speaking this message: {message}...")
         

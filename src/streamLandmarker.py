@@ -29,6 +29,10 @@ tts_thread.start()
 curr_exercise = None 
 prev_exercise = None
 
+# Input Parameters
+SPEACH_INTERVAL = 10000#ms
+
+
 joint_map = [
 "nose", "left eye (inner)", "left eye", "left eye (outer)", "right eye (inner)", "right eye", "right eye (outer)",
 "left ear", "right ear", "mouth (left)", "mouth (right)", "left shoulder", "right shoulder", "left elbow", "right elbow",
@@ -55,7 +59,6 @@ options = PoseLandmarkerOptions(
     base_options=BaseOptions(model_asset_path=pose_model_path),
     running_mode=VisionRunningMode.VIDEO
 )
-
 with PoseLandmarker.create_from_options(options) as landmarker:
     cap = cv2.VideoCapture(0)  # Use webcam
     if not cap.isOpened():
@@ -137,9 +140,13 @@ with PoseLandmarker.create_from_options(options) as landmarker:
                     # Convert to human-readable label
                     predicted_label = encoder.inverse_transform(numeric_pred)
                     curr_exercise = predicted_label[0]
+                    print(f"Current ts {timestamp_ms}")
 
                     if curr_exercise != prev_exercise or prev_exercise == None:
-                        print(f"New exercise detected...")
+                        print(f"New exercise: {curr_exercise} detected...")
+
+                    if timestamp_ms % SPEACH_INTERVAL == 0: # Every 10 seconds
+                        print(f"10 seconds passed (timestamp = {timestamp_ms}), now generating message")
                         message = generate_motivation(curr_exercise, "gym_bro")
                         tts_queue.put(message, block=True)
 
